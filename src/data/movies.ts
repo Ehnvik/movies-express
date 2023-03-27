@@ -1,4 +1,6 @@
-export const movies = [
+import { IMovie } from "../models/IMovie";
+
+export const movies: IMovie[] = [
   {
     id: 76,
     name: "The Dark Knight",

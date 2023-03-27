@@ -5,14 +5,14 @@ const app = express();
 
 app.use(
   cors({
-    methods: ["GET", "PUT", "PATCH", "DELETE", "POST"],
+    methods: ["GET", "PUT", "DELETE", "POST"],
   })
 );
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use("/");
+// app.use("/",);
 
 const port = process.env.PORT || 8008;
 const run = () => {
