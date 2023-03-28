@@ -1,3 +1,11 @@
+export interface IMovie {
+  id?: number,
+  name: string,
+  description: string,
+  imageUrl: string
+}
+
+
 export const movies = [
   {
     id: 76,
@@ -256,3 +264,37 @@ export const movies = [
       "https://m.media-amazon.com/images/M/MV5BZGU2OGY5ZTYtMWNhYy00NjZiLWI0NjUtZmNhY2JhNDRmODU3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,643,1000_AL_.jpg",
   },
 ];
+
+export const getAllMovies = () => {
+  return movies;
+}
+
+export const getMovieById = (id:number) => {
+  const movie = movies.find(m => m.id===id);
+  return movie;
+}
+
+export const addMovie = (movie: IMovie) => {
+  const lastMovie = movies.slice(-1)[0];
+  let id = lastMovie.id;
+  id=id ? id+1: 1;
+  movies.push({
+    id,
+    name: movie.name,
+    description: movie.description,
+    imageUrl: movie.imageUrl
+  })
+}
+
+export const updateMovie = (id: number, movie:IMovie) => {
+  const i = movies.findIndex(m => m.id===id);
+  movies[i].name = movie.name;
+  movies[i].description = movie.description;
+  movies[i].imageUrl = movie.imageUrl;
+
+}
+
+export const deleteMovieById = (id:number)=> {
+  const i = movies.findIndex(m => m.id===id);
+  movies.splice(i,1);
+}
