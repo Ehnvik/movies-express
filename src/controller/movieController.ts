@@ -31,4 +31,25 @@ export const createMovie = (req: Request, res: Response) => {
   });
 
   res.send("Movie created successfully");
+  //   res.sendStatus(201);
+};
+
+export const deleteMovie = (req: Request, res: Response) => {
+  const i = movies.findIndex((m) => m.id === +req.params.id);
+  movies.splice(i, 1);
+
+  res.send("Movie deleted successfully");
+  //   res.sendStatus(201);
+};
+
+export const updateMovie = (req: Request, res: Response) => {
+  const i = movies.findIndex((c) => c.id === +req.params.id);
+
+  if (i !== -1) {
+    movies[i].name = req.body.name;
+    movies[i].description = req.body.description;
+    res.send("Movie updated successfully");
+  } else {
+    res.status(404).send("Movie not found");
+  }
 };
