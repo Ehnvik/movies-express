@@ -7,7 +7,7 @@ export const getMovies = (req: Request, res: Response): void => {
 };
 
 export const getMovieById = (req: Request, res: Response) => {
-  const movie = movies.find((m) => m.id.toString() === req.params.id);
+  const movie = movies.find((m) => m.id === +req.params.id);
   res.json(movie);
 };
 
@@ -23,12 +23,14 @@ export const createMovie = (req: Request, res: Response) => {
     imageUrl: req.body.imageUrl,
   };
 
-  movies.push({
-    id: newMovie.id,
-    name: newMovie.name,
-    description: newMovie.description,
-    imageUrl: newMovie.imageUrl,
-  });
+  // movies.push({
+  //   id: newMovie.id,
+  //   name: newMovie.name,
+  //   description: newMovie.description,
+  //   imageUrl: newMovie.imageUrl,
+  // });
+
+  movies.push(newMovie);
 
   res.send("Movie created successfully");
   //   res.sendStatus(201);
@@ -48,6 +50,7 @@ export const updateMovie = (req: Request, res: Response) => {
   if (i !== -1) {
     movies[i].name = req.body.name;
     movies[i].description = req.body.description;
+    movies[i].imageUrl = req.body.imageUrl;
     res.send("Movie updated successfully");
   } else {
     res.status(404).send("Movie not found");
