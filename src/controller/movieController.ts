@@ -38,10 +38,13 @@ export const createMovie = (req: Request, res: Response) => {
 
 export const deleteMovie = (req: Request, res: Response) => {
   const i = movies.findIndex((m) => m.id === +req.params.id);
-  movies.splice(i, 1);
 
-  res.send("Movie deleted successfully");
-  //   res.sendStatus(201);
+  if (i !== -1) {
+    movies.splice(i, 1);
+    res.send("Movie deleted successfully");
+  } else {
+    res.status(404).send("Movie not found");
+  }
 };
 
 export const updateMovie = (req: Request, res: Response) => {
