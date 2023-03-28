@@ -1,12 +1,6 @@
-export interface IMovie {
-  id?: number,
-  name: string,
-  description: string,
-  imageUrl: string
-}
+import { IMovie } from "../models/IMovie";
 
-
-export const movies = [
+export const movies: IMovie[] = [
   {
     id: 76,
     name: "The Dark Knight",
