@@ -34,10 +34,10 @@ export const Movies = () => {
           goToMovie(m.id);
         }}
       >
-        <h4>{m.name}</h4>
         <div>
           <img src={m.imageUrl} alt={m.name} onError={imageError} />
         </div>
+        <h2>{m.name}</h2>
       </div>
     );
   });
