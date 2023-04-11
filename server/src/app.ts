@@ -1,20 +1,24 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
-const cors = require("cors");
+import { router as index, movieRoutes } from "./routes";
+import cors from "cors";
 
 const app = express();
 
 app.use(
   cors({
-    methods: ["GET", "PUT", "PATCH", "DELETE", "POST"],
+    methods: ["GET", "PUT", "DELETE", "POST"],
   })
 );
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use("/");
+app.use("/", index, movieRoutes);
 
-const port = process.env.PORT || 8008;
+const port = process.env.PORT;
 const run = () => {
   try {
     app.listen(port, () => {

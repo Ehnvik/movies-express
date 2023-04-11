@@ -1,0 +1,28 @@
+.moviesContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem 0;
+  > div {
+    width: 25%;
+    box-shadow: 0 0 5px rgba($color: #f8f8f8, $alpha: 0.6);
+    padding: 1rem 0;
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    > div {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+}

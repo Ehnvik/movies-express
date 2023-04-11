@@ -1,0 +1,35 @@
+.movieContainer {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    gap: 1rem;
+    justify-content: center;
+    position: relative;
+    padding: 5rem 0;
+    align-self: center;
+    background-color: black;
+    button {
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 30px;
+        border: none;
+        border-radius: 3px;
+        background-color: white;
+        &:hover {
+            cursor: pointer;
+            opacity: 0.8;
+        }
+    }
+    &__img {
+        width: 50%;
+        img {
+            width: 100%;
+        }
+    }
+    &__details {
+        width: 50%;
+    }
+}
