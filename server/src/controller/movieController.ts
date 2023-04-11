@@ -8,7 +8,12 @@ export const getMovies = (req: Request, res: Response): void => {
 
 export const getMovieById = (req: Request, res: Response) => {
   const movie = movies.find((m) => m.id === +req.params.id);
-  res.json(movie);
+  if(movie){
+    res.json(movie);
+  }
+  else {
+    res.sendStatus(404);
+  }
 };
 
 export const createMovie = (req: Request, res: Response) => {
@@ -22,18 +27,8 @@ export const createMovie = (req: Request, res: Response) => {
     description: req.body.description,
     imageUrl: req.body.imageUrl,
   };
-
-  // movies.push({
-  //   id: newMovie.id,
-  //   name: newMovie.name,
-  //   description: newMovie.description,
-  //   imageUrl: newMovie.imageUrl,
-  // });
-
   movies.push(newMovie);
-
   res.send("Movie created successfully");
-  //   res.sendStatus(201);
 };
 
 export const deleteMovie = (req: Request, res: Response) => {
